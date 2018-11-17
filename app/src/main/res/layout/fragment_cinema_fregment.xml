@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".mvp.view.fregment.CinemaFregment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/cinmea_map"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:background="@mipmap/cinem" />
+
+        <TextView
+            android:id="@+id/cinema_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:text="城市"
+            android:textColor="@color/contents_text"
+            android:textSize="16sp" />
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp">
+            <ImageView
+                android:layout_alignParentRight="true"
+                android:layout_width="48dp"
+                android:layout_height="24dp"
+                android:background="@drawable/sousuo_bj"
+                android:src="@mipmap/com_icon_search_default_xhdpi" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_cinema"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:tabBackground="@drawable/tab_select"
+        app:tabGravity="fill"
+        android:layout_marginTop="30dp"
+        />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_cinema_tablayout"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></android.support.v4.view.ViewPager>
+
+
+
+</LinearLayout>

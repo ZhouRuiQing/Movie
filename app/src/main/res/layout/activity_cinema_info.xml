@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mvp.view.activity.CinemaInfoActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/hdpipp"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/cinema_Relative_Layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_cinema_image"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="24dp"
+                android:src="@drawable/tag_view" />
+
+            <TextView
+                android:id="@+id/tv_cinema_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:text="name"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tv_cinema_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="80dp"
+                android:layout_marginTop="30dp"
+                android:text="title"
+                android:textColor="@color/white" />
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="14dp"
+                android:layout_marginRight="24dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:src="@mipmap/com_icon_navigation_default_hdpi" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:gravity="center"
+            >
+
+            <recycler.coverflow.RecyclerCoverFlow
+                android:id="@+id/cinemas_RecyclerCover_Flow"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_height="412dp"></recycler.coverflow.RecyclerCoverFlow>
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:background="@color/white"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/Schedule_recylcer_View"
+            android:layout_marginLeft="24dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
+
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/cinemas_back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="24dp"
+            android:background="@drawable/fanhui" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

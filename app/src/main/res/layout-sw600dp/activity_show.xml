@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/hdpipp"
+    tools:context=".mvp.view.activity.ShowActivity">
+
+    <TextView
+        android:id="@+id/tv_deta_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25sp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:drawableLeft="@drawable/movie"
+        android:textColor="@color/white"
+        android:text="电影详情"
+        />
+
+    <ImageView
+        android:id="@+id/iv_deta_heart"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="18dp"
+        android:layout_marginRight="18dp"
+        android:background="@drawable/guanzhu"
+        android:gravity="center_vertical"
+        android:textColor="@color/white"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/movie_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="电影详情"
+        android:gravity="center"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/white"
+        android:textSize="30sp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="107dp"
+        android:layout_marginBottom="130dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        >
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/iv_deta_image"
+            android:layout_width="401dp"
+            android:layout_height="550dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/bac" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="70dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:id="@+id/frament"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="9"
+            android:layout_gravity="left"
+            ></FrameLayout>
+
+        <RadioGroup
+            android:id="@+id/radio_group"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/deta_rb_1"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:background="@drawable/deta_selector"
+                android:button="@null"
+                android:checked="true"
+                android:gravity="center"
+                android:text="详情"
+                android:textSize="20sp" />
+            <RadioButton
+                android:id="@+id/deta_rb_2"
+                android:layout_width="40dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/deta_selector"
+                android:text="预告" />
+
+            <RadioButton
+                android:id="@+id/deta_rb_3"
+                android:layout_width="40dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/deta_selector"
+                android:text="剧照" />
+            <RadioButton
+                android:id="@+id/deta_rb_4"
+                android:layout_width="40dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:button="@null"
+                android:gravity="center"
+                android:textSize="25sp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/deta_selector"
+                android:text="影评" />
+        </RadioGroup>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/fanhui"
+            android:gravity="center"
+            android:text="@null" />
+
+        <Button
+            android:id="@+id/shop_buytick"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginRight="10dp"
+            android:text="购票"
+            android:textSize="20sp"
+            android:background="@drawable/deta_shop_selector"
+            tools:ignore="RtlCompat" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

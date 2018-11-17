@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="purple">#b19c0563</color>
+    <color name="white_yellow">#e7e988</color>
+    <color name="bankgroup">#47034e</color>
+    <color name="radio_user">#e95ab9</color>
+</resources>

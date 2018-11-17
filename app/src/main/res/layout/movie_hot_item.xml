@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/bac"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/guanzhu"
+            android:layout_alignParentRight="true"
+            android:id="@+id/hot_btn_heart"
+            />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_marginLeft="150dp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="name"
+            />
+
+        <TextView
+            android:layout_marginLeft="150dp"
+            android:layout_marginTop="40dp"
+            android:textColor="#ffffff"
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="title" />
+
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_movie_image"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="49dp" />
+
+</RelativeLayout>

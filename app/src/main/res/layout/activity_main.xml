@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvp.view.activity.MainActivity">
+
+ <com.hjm.bottomtabbar.BottomTabBar
+     android:id="@+id/bottom_bar"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent">
+
+ </com.hjm.bottomtabbar.BottomTabBar>
+
+
+ <!--   <FrameLayout
+        android:id="@+id/frame_layout"
+        android:layout_weight="9"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"></FrameLayout>
+
+    <RadioGroup
+        android:id="@+id/radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:background="#50FFFFFF"
+        >
+
+        <RadioButton
+            android:id="@+id/rb_1"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/selector"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            />
+        <RadioButton
+            android:id="@+id/rb_2"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/selectoryingyuan"
+            android:button="@null"
+            android:gravity="center"
+            />
+        <RadioButton
+            android:id="@+id/rb_3"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/selectorswode"
+            android:button="@null"
+            android:gravity="center"
+            />
+
+    </RadioGroup>
+-->
+</LinearLayout>
