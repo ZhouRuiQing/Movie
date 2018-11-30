@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,11 +70,11 @@ public class SetFragment extends Fragment {
                 startActivity(new Intent(getActivity(), MyFeedActivity.class));
                 break;
 
-            case R.id.my_goupiao://购票
+            case R.id.my_goupiao://购票记录
                 startActivity(new Intent(getActivity(),ShopActivity.class));
                 break;
 
-            case R.id.my_attention://关注
+            case R.id.my_attention://我的关注
                 startActivity(new Intent(getActivity(),AttenActivity.class));
                 break;
 
@@ -85,17 +84,25 @@ public class SetFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-
         user = getActivity().getSharedPreferences("user", Context.MODE_PRIVATE);
-        String touicon = user.getString("touicon", "");
-        String phone = user.getString("phone", "");
+        boolean isLogin = user.getBoolean("isLogin", true);
+        if(isLogin){
 
-        Log.i("onResume", "onResume: ===="+touicon.toString());
-        Log.i("onResume", "onResume: ===="+phone.toString());
-        Glide.with(getActivity()).load(touicon)
-                .bitmapTransform(new GlideRoundTransform(getActivity(),35))
-                .into(ivIconHead);
-        //Toast.makeText(getActivity(), "touicon=== "+touicon, Toast.LENGTH_SHORT).show();
+            String touicon = user.getString("touicon", "");
+            String phone = user.getString("phone", "");
+
+
+            Glide.with(getActivity()).load(touicon)
+                    .bitmapTransform(new GlideRoundTransform(getActivity(),35))
+                    .into(ivIconHead);
+        }else {
+
+            ivIconHead.setImageResource(R.drawable.my_touxiang);
+        }
+
+
+
+
     }
 
     @Override

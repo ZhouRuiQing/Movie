@@ -15,7 +15,7 @@ import com.bw.movie.R;
 import com.bw.movie.mvp.view.apdater.NeatMyApdater;
 import com.bw.movie.mvp.model.bean.AllCinemasBean;
 import com.bw.movie.mvp.present.AllCinemasPresent;
-import com.bw.movie.mvp.view.IView.IAllCinemas;
+import com.bw.movie.IView.IAllCinemas;
 
 import java.util.List;
 
@@ -69,10 +69,13 @@ public class NearByFragment extends Fragment implements IAllCinemas {
     public void success(AllCinemasBean allCinemasBean) {
 
         List<AllCinemasBean.ResultBean> list = allCinemasBean.getResult();
-        Log.i(TAG, "success: =====" + list.size());
+        Log.i("success", "success: =====" + list.size());
 
         nearRcvylcerView.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        nearRcvylcerView.setAdapter(new NeatMyApdater(getActivity(),list));
+        NeatMyApdater neatMyApdater = new NeatMyApdater(getActivity(), list);
+        nearRcvylcerView.setAdapter(neatMyApdater);
+
+        neatMyApdater.notifyDataSetChanged();
     }
 
     @Override

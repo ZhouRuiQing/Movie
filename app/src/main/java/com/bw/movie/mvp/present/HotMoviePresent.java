@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.bw.movie.mvp.model.bean.Movieinfo;
 import com.bw.movie.mvp.model.ModelMovie;
-import com.bw.movie.mvp.view.IView.IHotMvoieView;
+import com.bw.movie.IView.IHotMvoieView;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

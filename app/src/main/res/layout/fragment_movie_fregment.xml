@@ -22,7 +22,7 @@
             <RelativeLayout
                 android:id="@+id/linLayout"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="330dp"
                 android:background="@drawable/hdpipp"
                 >
 
@@ -73,7 +73,7 @@
                     android:id="@+id/list"
                     android:layout_marginTop="50dp"
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"></recycler.coverflow.RecyclerCoverFlow>
+                    android:layout_height="330dp"></recycler.coverflow.RecyclerCoverFlow>
                 <!--
                        <com.facebook.drawee.view.SimpleDraweeView
                             android:id="@+id/simp_viewgs"

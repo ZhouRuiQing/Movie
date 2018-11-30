@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.bw.movie.mvp.model.UserModel;
 import com.bw.movie.mvp.model.bean.RegBean;
-import com.bw.movie.mvp.view.IView.IRegView;
+import com.bw.movie.IView.IRegView;
 
 import java.util.HashMap;
 
@@ -43,7 +43,6 @@ public class RegPresent extends BasePresent<IRegView> {
 
                     @Override
                     public void onNext(RegBean regBean) {
-
                         iRegView.success(regBean);
                     }
 

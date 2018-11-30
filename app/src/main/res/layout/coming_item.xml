@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/iv_movie_image_three"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
         />
   <!--  app:actualImageScaleType="fitCenter"
     app:failureImage="@drawable/huiyuan"-->

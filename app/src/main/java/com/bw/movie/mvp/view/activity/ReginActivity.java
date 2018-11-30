@@ -18,14 +18,22 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.bw.movie.IView.IRegView;
+import com.bw.movie.IView.IWeiEView;
 import com.bw.movie.R;
+import com.bw.movie.app.Myapp;
+import com.bw.movie.eventbean.EventCode;
 import com.bw.movie.eventbean.MessageEvent;
 import com.bw.movie.mvp.model.bean.RegBean;
+import com.bw.movie.mvp.model.bean.WeEBean;
 import com.bw.movie.mvp.model.utils.EncryptUtil;
 import com.bw.movie.mvp.present.RegPresent;
-import com.bw.movie.mvp.view.IView.IRegView;
+import com.bw.movie.mvp.present.WeIePresent;
+import com.tencent.mm.sdk.modelmsg.SendAuth;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.HashMap;
 
@@ -33,7 +41,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ReginActivity extends AppCompatActivity implements IRegView {
+public class ReginActivity extends AppCompatActivity implements IRegView ,IWeiEView {
 
     @BindView(R.id.edit_name)
     EditText editName;
@@ -55,6 +63,7 @@ public class ReginActivity extends AppCompatActivity implements IRegView {
     private String loginPwd;
     private String loencryptPwd;
     private SharedPreferences user;
+    private WeIePresent weIePresent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,11 +72,22 @@ public class ReginActivity extends AppCompatActivity implements IRegView {
         ButterKnife.bind(this);
 
         initView();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
     }
 
     private void initView() {
 
+        //登录
         regPresent = new RegPresent(this);
+
+        //微信登录
+        weIePresent = new WeIePresent(this);
 
     }
 
@@ -118,9 +138,27 @@ public class ReginActivity extends AppCompatActivity implements IRegView {
                 }
                 break;
             case R.id.iv_weixin:
-
+                Log.i("iv_weixin", "onViewClicked: 点击了====");
+                wxLogin();
+                //Toast.makeText(this, "登陆成功", Toast.LENGTH_SHORT).show();
                 break;
         }
+
+    }
+
+
+    private void wxLogin() {
+        if (!Myapp.mWxApi.isWXAppInstalled()) {
+            Toast.makeText(this, "您还未安装微信客户端", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+            SendAuth.Req req = new SendAuth.Req();
+            req.scope = "snsapi_userinfo";
+            req.state = "wxb3852e6a6b7d9516";
+            Myapp.mWxApi.sendReq(req);
+
+
 
     }
 
@@ -142,10 +180,50 @@ public class ReginActivity extends AppCompatActivity implements IRegView {
             edit.putString("touicon",bean.getUserInfo().getHeadPic()).commit();
             edit.putString("name",bean.getUserInfo().getNickName()).commit();
             edit.putString("phone",loginName).commit();
+            edit.putString("pwd",loginPwd).commit();
             edit.putInt("sex",bean.getUserInfo().getSex()).commit();
             edit.putLong("birthday",bean.getUserInfo().getBirthday()).commit();
 
             //edit.putString("email",bean.getUserInfo().getLastLoginTime())
+            edit.putInt("userId",bean.getUserId());
+            edit.putString("sessionId",bean.getSessionId());
+            edit.putBoolean("isLogin",true).commit();
+            EventBus.getDefault().post(new MessageEvent(4));
+
+            finish();
+        }else{
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+
+    @Override
+    public void success(WeEBean weEBean) {
+        String status = weEBean.getStatus();
+        String message = weEBean.getMessage();
+
+        Log.i("message", "success: ==="+message+status);
+        WeEBean.ResultBean bean = weEBean.getResult();
+        //Log.i("message", "success: ==="+bean.getUserInfo().toString());
+        if(status.equalsIgnoreCase("0000")){
+
+            Toast.makeText(this, message+"登陆成功", Toast.LENGTH_SHORT).show();
+            Log.i("message","登陆成功 message==="+"message");
+            user = ReginActivity.this.getSharedPreferences("user", MODE_PRIVATE);
+
+            SharedPreferences.Editor edit = user.edit();
+            //boolean isLogin = user.getBoolean("isLogin", true);
+            edit.putString("touicon",bean.getUserInfo().getHeadPic()).commit();
+            edit.putString("name",bean.getUserInfo().getNickName()).commit();
+            edit.putString("phone",loginName).commit();
+            edit.putString("pwd",loginPwd).commit();
+            edit.putInt("sex",bean.getUserInfo().getSex()).commit();
+            edit.putLong("birthday",bean.getUserInfo().getBirthday()).commit();
+
+            //edit.putString("email",bean.getUserInfo().getLastLoginTime())
+            edit.putInt("userId",bean.getUserId());
+            edit.putString("sessionId",bean.getSessionId());
             edit.putBoolean("isLogin",true).commit();
             EventBus.getDefault().post(new MessageEvent(4));
 
@@ -157,6 +235,23 @@ public class ReginActivity extends AppCompatActivity implements IRegView {
 
     @Override
     public void Error(String msg) {
+
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        EventBus.getDefault().unregister(this);
+    }
+
+
+    @Subscribe(sticky = true,threadMode = ThreadMode.MAIN)
+    public void getEvent(EventCode eventCode) {
+
+        String code = eventCode.getCode();
+        weIePresent.getWeiE(code);
+        Log.i("code", "getEvent: ===="+code);
 
     }
 }

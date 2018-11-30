@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.bw.movie">
     //地图SDK（包含其搜索功能）需要的基础权限
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <!-- 允许程序打开网络套接字 -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -15,6 +16,11 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
 
     <application
         android:name=".app.Myapp"
@@ -30,17 +36,24 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".mvp.view.activity.GuideActivity" />
         <activity android:name=".mvp.view.activity.MainActivity" />
-        <activity android:name=".mvp.view.activity.ShowActivity" />
+        <activity android:name=".mvp.view.activity.ShowActivity"
+                  android:configChanges="orientation|screenSize|keyboardHidden"
+                  android:screenOrientation="portrait"
+            />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="b36b054178b25c0f0c1df37f84bcb3fb">
-            //开发者申请的key</meta-data>
+            android:value="5640275e06f2ebb7a58a92ae3bddc2a7">
+            //开发者申请的key
+        </meta-data>
+
+        <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".mvp.view.activity.MapActivity" />
         <activity android:name=".mvp.view.activity.TablayoutActivity" />
@@ -50,7 +63,18 @@
         <activity android:name=".mvp.view.activity.ReginActivity" />
         <activity android:name=".mvp.view.activity.UserActivity" />
         <activity android:name=".mvp.view.activity.ShopActivity" />
-        <activity android:name=".mvp.view.activity.AttenActivity"></activity>
+        <activity android:name=".mvp.view.activity.AttenActivity" />
+        <activity android:name=".mvp.view.activity.BuyTicketActivity" />
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <activity android:name=".mvp.view.activity.ResetPwdActivity" />
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop" />
+        <activity android:name=".mvp.view.activity.MyFeedsActivity"></activity>
     </application>
 
 </manifest>

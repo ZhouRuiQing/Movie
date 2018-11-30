@@ -1,7 +1,7 @@
 package com.bw.movie.mvp.present;
 
 
-import com.bw.movie.mvp.view.IView.IBaseView;
+import com.bw.movie.IView.IBaseView;
 
 public class BasePresent<V extends IBaseView> {
 

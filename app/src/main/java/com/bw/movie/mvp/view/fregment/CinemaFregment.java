@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.eventbean.EventCode;
 import com.bw.movie.mvp.view.activity.MapActivity;
 import com.bw.movie.mvp.view.apdater.MovieFragmentApdater;
 import com.bw.movie.mvp.view.fregment.fragments.NearByFragment;
@@ -56,6 +57,7 @@ public class CinemaFregment extends Fragment {
         // Inflate the layout for this fragment
         View inflate = inflater.inflate(R.layout.fragment_cinema_fregment, container, false);
         unbinder = ButterKnife.bind(this, inflate);
+        EventBus.getDefault().register(this);
         return inflate;
     }
 
@@ -68,7 +70,7 @@ public class CinemaFregment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        EventBus.getDefault().register(this);
+
         initView();
         initData();
 
@@ -103,9 +105,9 @@ public class CinemaFregment extends Fragment {
 
     }
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void getEvent(String city) {
-
-        cinemaCity.setText(city);
+    public void getEvent(EventCode city) {
+        String code = city.getCode();
+        cinemaCity.setText(code);
     }
 
 

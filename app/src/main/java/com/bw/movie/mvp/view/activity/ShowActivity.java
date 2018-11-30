@@ -1,6 +1,7 @@
 package com.bw.movie.mvp.view.activity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
@@ -21,6 +22,12 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 
 import com.bw.movie.R;
+import com.bw.movie.mvp.model.bean.AttenBean;
+import com.bw.movie.mvp.model.bean.UnflowwBean;
+import com.bw.movie.mvp.present.AttentPresent;
+import com.bw.movie.mvp.present.UnFlowwAttenPresent;
+import com.bw.movie.IView.IAttentView;
+import com.bw.movie.IView.IUnAttenView;
 import com.bw.movie.mvp.view.apdater.FilmApdater;
 import com.bw.movie.mvp.view.apdater.MyForseApdater;
 import com.bw.movie.mvp.view.apdater.MyStageApdater;
@@ -28,8 +35,8 @@ import com.bw.movie.mvp.model.bean.DetailMovie;
 import com.bw.movie.mvp.model.bean.FilmBean;
 import com.bw.movie.mvp.present.DetaPresent;
 import com.bw.movie.mvp.present.FilmPresent;
-import com.bw.movie.mvp.view.IView.IDetaView;
-import com.bw.movie.mvp.view.IView.IFilmView;
+import com.bw.movie.IView.IDetaView;
+import com.bw.movie.IView.IFilmView;
 import com.facebook.drawee.view.SimpleDraweeView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -39,10 +46,9 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayer;
 import io.reactivex.annotations.Nullable;
 
-public class ShowActivity extends AppCompatActivity implements IDetaView, IFilmView {
+public class ShowActivity extends AppCompatActivity implements IDetaView, IFilmView,IAttentView,IUnAttenView {
 
     @BindView(R.id.iv_deta_image)
     SimpleDraweeView ivDetaImage;
@@ -75,6 +81,11 @@ public class ShowActivity extends AppCompatActivity implements IDetaView, IFilmV
     private String TAG = new String();
     private List<FilmBean.ResultBean> filmBeanResult;
     private FilmPresent filmPresent;
+    private int movieId;
+    private AttentPresent attentPresent;
+    private SharedPreferences user;
+    private boolean isLogin;
+    private UnFlowwAttenPresent unFlowwAttenPresent;
     //private List<DetailMovie.ResultBean> list=new ArrayList<>();
 
 
@@ -87,26 +98,39 @@ public class ShowActivity extends AppCompatActivity implements IDetaView, IFilmV
         //EventBus.getDefault().register(this);
         inidData();
 
-
         /**
          * 关注
          *
          * */
+
+        user = this.getSharedPreferences("user", Context.MODE_PRIVATE);
+
+        isLogin = user.getBoolean("isLogin", true);
+
         ivDetaHeart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v == ivDetaHeart) {
-                    if (guanzhu) {
 
-                        ivDetaHeart.setImageResource(R.drawable.guanzhu);
-                    } else {
-                        ivDetaHeart.setImageResource(R.drawable.guanzhu1);
+                    if (v == ivDetaHeart) {
+
+                        if(isLogin){
+
+                            ivDetaHeart.setImageResource(R.drawable.guanzhu1);
+                            attentPresent.getAttent(movieId);
+
+                        } else{
+                            ivDetaHeart.setImageResource(R.drawable.guanzhu);
+                            unFlowwAttenPresent.getUnfloww(movieId);
+                        }
+                        isLogin=!isLogin;
                     }
 
-                    guanzhu = !guanzhu;
                 }
-            }
+
+
         });
+
+
 
     }
 
@@ -119,35 +143,36 @@ public class ShowActivity extends AppCompatActivity implements IDetaView, IFilmV
         bean = detailMovie.getResult();
         ivDetaImage.setImageURI(bean.getImageUrl());
         movieName.setText(bean.getName());
+        movieId = bean.getId();
 
     }
 
-    @Override
-    public void onBackPressed() {
-
-        if (JCVideoPlayer.backPress()) {
-            return;
-        }
-        super.onBackPressed();
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        JCVideoPlayer.releaseAllVideos();
-    }
+//    @Override
+//    public void onBackPressed() {
+//
+//        if (JZVideoPlayer.backPress()) {
+//            return;
+//        }
+//        super.onBackPressed();
+//    }
+//
+//    @Override
+//    protected void onPause(){
+//        super.onPause();
+//        JZVideoPlayer.releaseAllVideos();
+//    }
 
     /**
      * EventBus的接收方法
      *
      * @param context 传递类
      */
-  /*  @Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
+  /*@Subscribe(threadMode = ThreadMode.MAIN,sticky = true)
     public void getEvent(DetailMovie detailMovie){
 
         Log.i("aaa",detailMovie.getResult().getId()+"eventid");
     }*/
-    private void inidData() {
+    private void inidData(){
         int id = getIntent().getIntExtra("id", 0);
 
         detaPresent = new DetaPresent(this);
@@ -155,6 +180,14 @@ public class ShowActivity extends AppCompatActivity implements IDetaView, IFilmV
 
         filmPresent = new FilmPresent(this);
         filmPresent.getFilm(1, 1, 15);
+
+        //关注
+        attentPresent = new AttentPresent(this);
+
+
+        //取消关注
+        unFlowwAttenPresent = new UnFlowwAttenPresent(this);
+
     }
 
     @OnClick({R.id.deta_rb_1, R.id.deta_rb_2, R.id.deta_rb_3, R.id.deta_rb_4, R.id.back, R.id.shop_buytick})
@@ -201,7 +234,7 @@ public class ShowActivity extends AppCompatActivity implements IDetaView, IFilmV
         FilmRecylcerView=view.findViewById(R.id.Film_Recylcer_View);
         FilmRecylcerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         FilmRecylcerView.setAdapter(new FilmApdater(this, filmBeanResult));
-        PopupWindow window = new PopupWindow(view, WindowManager.LayoutParams.MATCH_PARENT, 1000);
+        PopupWindow window = new PopupWindow(view,WindowManager.LayoutParams.MATCH_PARENT, 1000);
         window.setFocusable(true);
 
         ColorDrawable dw = new ColorDrawable(0xffffffff);
@@ -323,8 +356,25 @@ public class ShowActivity extends AppCompatActivity implements IDetaView, IFilmV
         Log.i("aaa", "success: ====" + filmBeanResult.size());
     }
 
+    //关注
+    @Override
+    public void success(AttenBean attenBean) {
+        String message = attenBean.getMessage();
+        Log.i("message", "success: ====="+message);
+    }
+
+    //取消关注
+    @Override
+    public void success(UnflowwBean unflowwBean) {
+
+        String message = unflowwBean.getMessage();
+        Log.i("message", "success:un ====="+message);
+    }
+
     @Override
     public void Error(String msg) {
+
+        Log.i("onError", "Error: ==="+msg);
 
     }
 

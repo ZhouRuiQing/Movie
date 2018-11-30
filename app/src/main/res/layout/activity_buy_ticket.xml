@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mvp.view.activity.BuyTicketActivity">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@mipmap/seat_back"
+        />
+
+    <com.bw.movie.mvp.view.cancansview.SeatTable
+        android:layout_marginTop="130dp"
+        android:id="@+id/seatView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/re"
+        android:layout_width="312dp"
+        android:layout_height="73dp"
+        android:layout_marginLeft="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/goupiao">
+
+        <TextView
+            android:id="@+id/q"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="34dp"
+            android:layout_marginTop="38dp"
+            android:layout_marginBottom="20dp"
+            android:text="合计：" />
+
+        <TextView
+            android:id="@+id/seat_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="6dp"
+            android:layout_toRightOf="@id/q"
+            android:text="53.9"
+            android:textColor="#bd2eb1"
+            android:textSize="36sp" />
+
+        <ImageView
+            android:id="@+id/jie_suan"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="27dp"
+            android:layout_marginTop="10dp"
+            android:background="@mipmap/group2" />
+
+        <ImageView
+            android:id="@+id/qu_xiao"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="19dp"
+            android:background="@mipmap/quxiao" />
+    </RelativeLayout>
+
+    <!--
+
+        <RelativeLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/hdpipp"
+            >
+
+            <TextView
+                android:id="@+id/buy_cinema_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:text="影院名字"
+                />
+
+            <TextView
+            android:id="@+id/buy_cinema_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:textColor="@color/white"
+            android:text="影院地址"
+            />
+            <TextView
+                android:id="@+id/buy_cinema_movie_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="60dp"
+                android:text="影片名字"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                />
+            <TextView
+                android:id="@+id/buy_cinema_movie_hall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="100dp"
+                android:text="影片名字"
+                android:textSize="16sp"
+                android:textColor="@color/white"
+                />
+        </RelativeLayout>
+    -->
+</RelativeLayout>

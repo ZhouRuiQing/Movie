@@ -26,9 +26,9 @@ import com.bw.movie.mvp.model.bean.Movieinfo;
 import com.bw.movie.mvp.present.ComingPresent;
 import com.bw.movie.mvp.present.FindPresent;
 import com.bw.movie.mvp.present.HotMoviePresent;
-import com.bw.movie.mvp.view.IView.IComingView;
-import com.bw.movie.mvp.view.IView.IFindView;
-import com.bw.movie.mvp.view.IView.IHotMvoieView;
+import com.bw.movie.IView.IComingView;
+import com.bw.movie.IView.IFindView;
+import com.bw.movie.IView.IHotMvoieView;
 import com.bw.movie.mvp.view.activity.MapActivity;
 import com.bw.movie.mvp.view.activity.TablayoutActivity;
 

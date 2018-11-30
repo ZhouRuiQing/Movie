@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="70dp"
     android:layout_marginTop="5dp"
     android:background="@drawable/shares_backs"
     >
@@ -15,21 +15,19 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="231dp"
         android:layout_marginLeft="231dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="国语3D" />
 
     <TextView
         android:id="@+id/tv_schdule_price"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="100dp"
+        android:layout_height="30dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="317dp"
-        android:layout_marginLeft="317dp"
-        android:layout_marginTop="41dp"
-        android:text="￥53"
+        android:layout_marginLeft="250dp"
+        android:layout_marginTop="34dp"
+        android:text="￥0.2"
         android:textColor="#f00"
-        android:textSize="25sp"
-        />
+        android:textSize="22sp" />
 
     <TextView
         android:id="@+id/tv_schdule_name"
@@ -40,7 +38,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="10dp"
         android:text="name" />
 
     <TextView
@@ -52,21 +50,21 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="30dp"
         android:text="kaishi"
         android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/tv_schdule_end"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="143dp"
-        android:layout_marginLeft="143dp"
-        android:layout_marginTop="66dp"
-        android:text="jieshu"
-        android:textSize="20sp" />
+    <!--<TextView-->
+        <!--android:id="@+id/tv_schdule_end"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentStart="true"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_alignParentTop="true"-->
+        <!--android:layout_marginStart="143dp"-->
+        <!--android:layout_marginLeft="143dp"-->
+        <!--android:layout_marginTop="66dp"-->
+        <!--android:text="jieshu"-->
+        <!--android:textSize="20sp" />-->
 
 </RelativeLayout>

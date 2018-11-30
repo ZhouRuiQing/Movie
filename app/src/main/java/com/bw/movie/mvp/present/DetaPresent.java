@@ -2,7 +2,7 @@ package com.bw.movie.mvp.present;
 
 import com.bw.movie.mvp.model.bean.DetailMovie;
 import com.bw.movie.mvp.model.DetaModel;
-import com.bw.movie.mvp.view.IView.IDetaView;
+import com.bw.movie.IView.IDetaView;
 
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;

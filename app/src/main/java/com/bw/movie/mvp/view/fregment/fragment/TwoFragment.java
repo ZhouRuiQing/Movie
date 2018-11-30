@@ -16,7 +16,7 @@ import com.bw.movie.R;
 import com.bw.movie.mvp.view.apdater.tabapdaters.FindApdater;
 import com.bw.movie.mvp.model.bean.MovieFindinfo;
 import com.bw.movie.mvp.present.FindPresent;
-import com.bw.movie.mvp.view.IView.IFindView;
+import com.bw.movie.IView.IFindView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import org.greenrobot.eventbus.EventBus;

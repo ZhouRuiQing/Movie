@@ -16,7 +16,7 @@ import com.bw.movie.R;
 import com.bw.movie.mvp.view.apdater.tabapdaters.MovieHotApdater;
 import com.bw.movie.mvp.model.bean.Movieinfo;
 import com.bw.movie.mvp.present.HotMoviePresent;
-import com.bw.movie.mvp.view.IView.IHotMvoieView;
+import com.bw.movie.IView.IHotMvoieView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.List;

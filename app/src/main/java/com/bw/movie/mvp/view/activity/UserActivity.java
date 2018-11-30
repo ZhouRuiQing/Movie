@@ -20,7 +20,7 @@ import com.bw.movie.R;
 import com.bw.movie.mvp.model.bean.UserBean;
 import com.bw.movie.mvp.model.utils.EncryptUtil;
 import com.bw.movie.mvp.present.UserPresent;
-import com.bw.movie.mvp.view.IView.IUserView;
+import com.bw.movie.IView.IUserView;
 import com.gyf.barlibrary.ImmersionBar;
 
 import java.util.HashMap;
@@ -163,8 +163,7 @@ public class UserActivity extends AppCompatActivity implements IUserView {
 
                                 SharedPreferences.Editor edit = user.edit();
                                 edit.putString("name",name).commit();
-
-                               userPresent.getUser(map);
+                                userPresent.getUser(map);
                             }
                         }else{
                             if(pwd2.trim()!=""&TextUtils.isEmpty(pwd2)){

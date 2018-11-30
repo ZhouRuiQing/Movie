@@ -68,7 +68,7 @@ public class UserBuyBean {
         private int id;
         private String movieName;
         private String orderId;
-        private double price;
+        private String price;
         private String screeningHall;
         private int status;
         private int userId;
@@ -137,11 +137,11 @@ public class UserBuyBean {
             this.orderId = orderId;
         }
 
-        public double getPrice() {
+        public String getPrice() {
             return price;
         }
 
-        public void setPrice(double price) {
+        public void setPrice(String price) {
             this.price = price;
         }
 

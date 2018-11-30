@@ -13,7 +13,7 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/guanzhu"
+                android:background="@drawable/guanzhu1"
                 android:layout_alignParentRight="true"
                 android:id="@+id/find_btn_heart"
                 />

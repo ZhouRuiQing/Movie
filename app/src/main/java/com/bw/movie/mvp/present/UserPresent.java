@@ -2,7 +2,7 @@ package com.bw.movie.mvp.present;
 
 import com.bw.movie.mvp.model.UserModel;
 import com.bw.movie.mvp.model.bean.UserBean;
-import com.bw.movie.mvp.view.IView.IUserView;
+import com.bw.movie.IView.IUserView;
 
 import java.util.HashMap;
 

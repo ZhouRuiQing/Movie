@@ -15,7 +15,7 @@ import com.bw.movie.R;
 import com.bw.movie.mvp.view.apdater.tabapdaters.ThreeComingApdater;
 import com.bw.movie.mvp.model.bean.ComingMovie;
 import com.bw.movie.mvp.present.ComingPresent;
-import com.bw.movie.mvp.view.IView.IComingView;
+import com.bw.movie.IView.IComingView;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 
 import java.util.List;

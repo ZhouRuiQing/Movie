@@ -6,16 +6,16 @@ import android.widget.ImageView;
 
 import com.bw.movie.R;
 
-import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerSimple;
+import cn.jzvd.JzvdStd;
+
 
 class MyForseViewHoder extends RecyclerView.ViewHolder {
 
     public ImageView play_image;
-    public JCVideoPlayerSimple play_list_viedeo;
-
+    public JzvdStd jzvdStd;
     public MyForseViewHoder(View itemView) {
         super(itemView);
-        play_list_viedeo = itemView.findViewById(R.id.play_list_video);
+        jzvdStd = itemView.findViewById(R.id.jzbfq);
         play_image = itemView.findViewById(R.id.play_list_image);
     }
 }

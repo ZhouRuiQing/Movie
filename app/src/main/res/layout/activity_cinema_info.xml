@@ -66,8 +66,6 @@
                 android:id="@+id/cinemas_RecyclerCover_Flow"
                 android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
                 android:layout_height="412dp"></recycler.coverflow.RecyclerCoverFlow>
 
         </LinearLayout>

@@ -36,11 +36,11 @@ import com.bw.movie.mvp.present.CinemaInfoPresent;
 import com.bw.movie.mvp.present.CommentPresent;
 import com.bw.movie.mvp.present.FindPresent;
 import com.bw.movie.mvp.present.SchedulePresent;
-import com.bw.movie.mvp.view.IView.IByCinmeaView;
-import com.bw.movie.mvp.view.IView.ICineminInfo;
-import com.bw.movie.mvp.view.IView.ICommentView;
-import com.bw.movie.mvp.view.IView.IFindView;
-import com.bw.movie.mvp.view.IView.IMovieSchedule;
+import com.bw.movie.IView.IByCinmeaView;
+import com.bw.movie.IView.ICineminInfo;
+import com.bw.movie.IView.ICommentView;
+import com.bw.movie.IView.IFindView;
+import com.bw.movie.IView.IMovieSchedule;
 import com.bw.movie.mvp.view.apdater.CinemaApdater;
 import com.bw.movie.mvp.view.apdater.CommentAdapter;
 import com.bw.movie.mvp.view.apdater.SchduleApdater;
@@ -227,9 +227,12 @@ public class CinemaInfoActivity extends AppCompatActivity implements ICineminInf
 
     private void initView() {
 
+         //影院详情
         cinemaInfoPresent = new CinemaInfoPresent(this);
         cinemaInfoPresent.getCinmeas(id);
 
+
+        //影院评论
         commentPresent = new CommentPresent(this);
         commentPresent.getCinmeas(id, 1, 55);
 
@@ -239,7 +242,7 @@ public class CinemaInfoActivity extends AppCompatActivity implements ICineminInf
 
         //电影票
         schedulePresent = new SchedulePresent(this);
-        schedulePresent.getAllCinemas(id,3);
+
 
 
         //根据影院ID查询该影院当前排期的电影列表
@@ -255,7 +258,7 @@ public class CinemaInfoActivity extends AppCompatActivity implements ICineminInf
     public void success(CinemaInfoBean cinemaInfoBean) {
 
         Log.i(TAG, "success: ====" + cinemaInfoBean.getResult().getAddress());
-        CinemaInfoBean.ResultBean bean = cinemaInfoBean.getResult();
+        CinemaInfoBean.ResultBean bean =  cinemaInfoBean.getResult();
 
         Glide.with(this)
                 .load(bean.getLogo())
@@ -312,8 +315,11 @@ public class CinemaInfoActivity extends AppCompatActivity implements ICineminInf
             finish();
         }else {
 
+            //
             CinemaApdater cinemapdater = new CinemaApdater(this,byCinemalist);
-            mlist.scrollToPosition(2);
+            mlist.scrollToPosition(3);
+            fare = byCinemalist.get(0).getFare();
+            schedulePresent.getAllCinemas(id,16);
             mlist.getSelectedPos();
             mlist.setOnItemSelectedListener(new CoverFlowLayoutManger.OnSelected() {
                 @Override

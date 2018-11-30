@@ -7,7 +7,7 @@ import android.widget.TextView;
 
 import com.bw.movie.R;
 
-class FindViewHoder extends RecyclerView.ViewHolder {
+public class FindViewHoder extends RecyclerView.ViewHolder {
 
     public ImageView find_iv_heard;
     public ImageView ivFindImage;

@@ -27,7 +27,7 @@ class SchduleViewHoder extends RecyclerView.ViewHolder {
         textView2 = itemView.findViewById(R.id.tv_schdule_ch);
         tvSchduleName =itemView.findViewById(R.id.tv_schdule_name);
         tvSchduleBegin =itemView.findViewById(R.id.tv_schdule_begin);
-        tvSchduleEnd = itemView.findViewById(R.id.tv_schdule_end);
+//        tvSchduleEnd = itemView.findViewById(R.id.tv_schdule_end);
         tvSchdulePrice = itemView.findViewById(R.id.tv_schdule_price);
 
     }
